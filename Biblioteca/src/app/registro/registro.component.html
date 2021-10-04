@@ -20,7 +20,23 @@
 				</div>
 			</div>
 
-			
+			<div class="formulario__grupo">
+				<label for="LastName" class="formulario__label">Apellido</label>
+				<div class="formulario__grupo-input">
+					<input type="text" formControlName="LastName" class="formulario__input" placeholder="Escribir apellido">
+				</div>
+				<div class="alert alert-danger" *ngIf="form.LastName.invalid && (form.LastName.dirty || form.LastName.touched)">
+					<div class="container-error-message" *ngIf="form.LastName.errors?.required">
+						El campo nombre es requerido
+					</div>
+					<div class="container-error-message" *ngIf="form.LastName.errors?.minlength">
+						El Apellido debe tener al menos 3 caracteres
+					</div>
+					<div class="container-error-message" *ngIf="(form.LastName.dirty || form.LastName.touched) && form.LastName.invalid && form.LastName.errors?.pattern">
+						No se aceptan caractares especiales en el campo "Apellido"
+					</div>
+				</div>
+			</div>
 
 			<div class="formulario__grupo">
 				<label for="password" class="formulario__label">Contraseña</label>
